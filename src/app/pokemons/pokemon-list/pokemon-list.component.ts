@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Pokemon } from 'src/app/_models/pokemon';
+import { PokemonItem } from 'src/app/_models/pokemonItem';
+import { PokemonList } from 'src/app/_models/pokemonList';
 import { PokemonsService } from 'src/app/_services/pokemons.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PokemonsService } from 'src/app/_services/pokemons.service';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  pokemonCards: Pokemon[] = [];
+  pokemonList: PokemonList | undefined;
 
   constructor(private pokemonsService: PokemonsService) { }
 
@@ -17,10 +17,9 @@ export class PokemonListComponent implements OnInit {
     this.getPokemons();
   }
 
-  getPokemons() {
+  getPokemons(): void {
     this.pokemonsService.getPokemons().subscribe({
-      next: response => this.pokemonCards = response
-    })
+      next: response => this.pokemonList = response
+    });
   }
-
 }

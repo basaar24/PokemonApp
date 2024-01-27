@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-2" *ngFor="let pokemonCard of pokemonCards">
-        <app-pokemon-card [pokemonCard]="pokemonCard"></app-pokemon-card>
+<div class="row" *ngIf="pokemonList">
+    <div class="col-2" *ngFor="let pokemon of pokemonList.results">
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
     </div>
 </div>

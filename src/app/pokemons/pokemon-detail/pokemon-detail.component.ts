@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Pokemon } from 'src/app/_models/pokemon';
+import { PokemonDetail } from 'src/app/_models/pokemonDetail';
 import { PokemonsService } from 'src/app/_services/pokemons.service';
 
 @Component({
@@ -11,21 +10,18 @@ import { PokemonsService } from 'src/app/_services/pokemons.service';
 })
 export class PokemonDetailComponent implements OnInit {
   @Input() pokemonName: string = "";
-  pokemon: Pokemon | undefined;
+  pokemon: PokemonDetail | undefined;
 
   constructor(private pokemonsService: PokemonsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(this.pokemonName);
     if(this.pokemonName !== "")
-      this.getPokemon();
+      this.getPokemon(this.pokemonName);
   }
 
-  getPokemon(): void {
+  getPokemon(pokemonName: string): void {
     this.pokemonsService.getPokemon(this.pokemonName).subscribe({
-      next: response => {
-        this.pokemon = response.find(p => p.name.toLowerCase() == this.pokemonName.toLowerCase());
-      }
+      next: response => this.pokemon = response
     });
   }
 

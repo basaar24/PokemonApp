@@ -5,13 +5,14 @@ import { PokemonDetailComponent } from './pokemons/pokemon-detail/pokemon-detail
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { authGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
   {
     path: "",
     runGuardsAndResolvers: "always",
-    canActivate: [],
+    canActivate: [authGuard],
     children: [
       { path: "pokemons", component: PokemonListComponent },
       { path: "pokemons/:pokemonName", component: PokemonDetailComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {bindToComponentInputs: true})],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
