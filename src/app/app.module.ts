@@ -11,9 +11,11 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PokemonHeightPipe } from './_pipes/pokemon-height.pipe';
-import { PokemonWeightPipe } from './_pipes/pokemon-weight.pipe';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './_modules/shared.module';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
     declarations: [
@@ -26,15 +28,18 @@ import { PokemonWeightPipe } from './_pipes/pokemon-weight.pipe';
         NotFoundComponent,
         ServerErrorComponent,
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        PokemonHeightPipe,
-        PokemonWeightPipe
+        FormsModule,
+        SharedModule
     ]
 })
 export class AppModule { }

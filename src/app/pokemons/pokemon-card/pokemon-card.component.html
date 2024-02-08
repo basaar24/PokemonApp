@@ -1,18 +1,18 @@
-<div class="card mb-4" *ngIf="pokemonCard">
+<div class="card mb-4" *ngIf="pokemon">
     <div class="card-img-wrapper">
-        <img src="{{pokemonCard.sprite}}" alt="{{pokemonCard.name | uppercase}}" class="card-img-top">
+        <img src="{{pokemon.sprite}}" alt="{{pokemon.name | uppercase}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item">
-                <button routerLink="/pokemons/{{pokemonCard.name}}" class="btn btn-primary"><i class="fa fa-bug"></i></button>
+                <button routerLink="/pokemons/{{pokemon.name}}" class="btn btn-primary"><i class="fa fa-bug"></i></button>
             </li>
         </ul>
     </div>
     <div class="card-body p-1">
         <h6 class="card-title text-center mb-1">    
             <i class="fa fa-user me-2"></i>
-            {{pokemonCard.name | uppercase}}
+            {{pokemon.name | uppercase}}
         </h6>
-        <p class="card-text text-muted text-center" *ngIf="pokemonCard.forms_switchable;then content else other_content"></p>
+        <p class="card-text text-muted text-center" *ngIf="pokemon.forms_switchable;then content else other_content"></p>
         <ng-template #content>
             <p class="card-text text-muted text-center">Switchable</p>
         </ng-template>
