@@ -8,9 +8,9 @@ import { User } from './_models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Pokemon App';
-  
-  constructor(private accountService: AccountService) {}
+  title = 'PokemonApp';
+
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.setCurrentUser();

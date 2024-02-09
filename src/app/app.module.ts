@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './_modules/shared.module';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
@@ -39,7 +39,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ]
 })
 export class AppModule { }

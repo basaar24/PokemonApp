@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PokemonsService } from './pokemons.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('PokemonServiceService', () => {
-  let service: PokemonServiceService;
+describe('PokemonService', () => {
+  let service: PokemonsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(PokemonsService);
   });
 

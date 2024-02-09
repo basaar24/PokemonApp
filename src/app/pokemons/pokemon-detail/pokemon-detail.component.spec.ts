@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonDetailComponent } from './pokemon-detail.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -8,7 +10,8 @@ describe('PokemonDetailComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PokemonDetailComponent]
+      declarations: [PokemonDetailComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     });
     fixture = TestBed.createComponent(PokemonDetailComponent);
     component = fixture.componentInstance;

@@ -17,19 +17,30 @@
                 <a class="dropdown-item" (click)="logout()">Exit</a>
             </div>
         </div>
-        <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+        <form *ngIf="!(accountService.currentUser$ | async)" class="d-flex" autocomplete="off"
+                [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
             <input
+                id="username"
                 name="username"
-                [(ngModel)]="model.username"
                 class="form-control me-2"
                 type="text"
-                placeholder="Username">
+                placeholder="Username"
+                required
+                formControlName="username">
+            <div class="error-notice" *ngIf="username?.invalid && username?.touched">
+                <p *ngIf="username?.errors?.['required']">Required</p>
+            </div>
             <input
+                id="password"
                 name="password"
-                [(ngModel)]="model.password"
                 class="form-control me-2"
                 type="password"
-                placeholder="Password">
+                placeholder="Password"
+                required
+                formControlName="password">
+            <div class="error-notice" *ngIf="password?.invalid && password?.touched">
+                <p *ngIf="password?.errors?.['required']">Required</p>
+            </div>
             <button class="btn btn-success" type="submit">Login</button>
         </form>
     </div>
