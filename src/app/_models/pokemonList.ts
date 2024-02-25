@@ -4,5 +4,5 @@ export interface PokemonList {
   count: number;
   next: string;
   previous: any;
-  results: Partial<PokemonItem[]>;
+  results: PokemonItem[];
 }
