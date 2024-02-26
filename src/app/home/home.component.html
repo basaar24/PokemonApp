@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div style="text-align: center;">
+        <h1>Let's catch'em all!</h1>
+        <p class="lead">Find all the Pokemons you want</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h2 class="text-center text-primary">Type email</h2>
+                <hr>
+                <div class="col-12">
+                    <input
+                        id="value"
+                        type="text"
+                        [(ngModel)]="value"
+                        (input)="inputChange()"
+                        (keydown.tab)="tabKeyPressed()" />
+                    <input
+                        id="placeholderValue"
+                        type="text"
+                        class="autocomplete" 
+                        disabled
+                        [(ngModel)]="placeholderValue" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
